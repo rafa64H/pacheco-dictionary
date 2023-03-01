@@ -13,7 +13,7 @@
     --clamp-h2: clamp(1.8rem, 2vw, 6rem);
     --clamp-h3: clamp(1.7rem, 1.8vw, 5rem);
     --clamp-h4: clamp(1.5rem, 1.8vw, 4rem);
-    --clamp-h4: clamp(1rem, 1.5vw, 3rem);
+    --clamp-h4: clamp(1rem, 1.3vw, 3rem);
 }
 
 *, *::before, *::after{
@@ -21,6 +21,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: sans-serif;
+    list-style: none;
 }
 body{
 
@@ -44,6 +45,7 @@ h3{
 }
 h4{
     font-size: var(--clamp-h4);
+    font-weight: 600;
 }
 
 
@@ -72,10 +74,33 @@ header{
 }
 
 .dictionary{
-
+    padding: 0.5em;
 }
 
 .word-section{
+    margin: 4em 0;
+
     text-align: center;
 }
 
+.part-speech{
+    margin: 0.5em 0
+}
+
+.definitions-li{
+    margin: 2em 0;
+}
+
+@media screen and (min-width: 800px){
+    header{
+        padding: 1em 2em;
+    }
+
+    .dictionary{
+        padding: 0 5em;
+    }
+    
+    .word-section{
+        text-align: left;
+    }
+}
