@@ -115,3 +115,13 @@ function capitalizeWord(wordToCap){
 function randomNumberInt(min, max){
     return Math.floor(Math.random() * (max - min) ) + min;
 }
+
+
+//search word from user input
+let stringUrl = document.URL
+let url = new URL(stringUrl)
+let wordInput = url.searchParams.get("the-word");
+
+if(wordInput !== null){
+    createSection(wordInput)
+}
