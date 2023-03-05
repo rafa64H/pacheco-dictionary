@@ -109,6 +109,7 @@ if(location.href.split(location.host)[1] === "/index.html") {
     
     for(let i = 0; i <=3; i++){
         let listWords = listOfWords
+        console.log(listWords)
         let randomNumber = randomNumberInt(0, listWords.length-1)
         let randomWord = listWords[randomNumber]
 

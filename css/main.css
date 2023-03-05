@@ -72,16 +72,17 @@ header{
 
 .open-nav-btn{
     margin-left: auto;
-    padding: 1em;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-}
+    padding: 0.25em 1em;
+    border-radius: 0.5rem;
 
-[data-opened-nav='false']{
-    background-image: url(../images/open-nav-icon.svg);
+    transition: all 300ms;
 }
-[data-opened-nav='true']{
-    background-image: url(../images/close-nav-icon.svg);
+.open-nav-btn:hover{
+    background-color: var(--second-color);
+}
+.fa-home{
+    color: white;
+    font-size: var(--clamp-h3);
 }
 
 .search-form{
@@ -150,6 +151,24 @@ header{
 
 .definitions-li{
     margin: 2em 0;
+}
+
+footer{
+    background-color: var(--first-color);
+    padding: 1em;
+    
+    color: white;
+}
+
+.footer__p{
+    font-size: var(--clamp-h4);
+    font-weight: 600;
+}
+.footer__link{
+    transition: all 300ms;
+}
+.footer__link:hover{
+    color: var(--second-color);
 }
 
 @media screen and (min-width: 800px){
