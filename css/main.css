@@ -11,8 +11,7 @@
 
     --clamp-h1: clamp(2rem, 2.5vw, 8rem);
     --clamp-h2: clamp(1.8rem, 2vw, 6rem);
-    --clamp-h3: clamp(1.7rem, 1.8vw, 5rem);
-    --clamp-h4: clamp(1.5rem, 1.8vw, 4rem);
+    --clamp-h3: clamp(1.5rem, 1.6vw, 4.2rem);
     --clamp-h4: clamp(1rem, 1.3vw, 3rem);
 }
 
@@ -20,12 +19,13 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: sans-serif;
     list-style: none;
 }
-body{
 
+*:not(i){
+    font-family: sans-serif;
 }
+
 
 button{
     border: none;
@@ -35,6 +35,7 @@ button{
 
 h1{
     font-size: var(--clamp-h1);
+    cursor: pointer;
 }
 h2{
     font-size: var(--clamp-h2);
@@ -42,10 +43,20 @@ h2{
 }
 h3{
     font-size: var(--clamp-h3);
+    color: var(--second-color);
 }
 h4{
     font-size: var(--clamp-h4);
     font-weight: 600;
+}
+label{
+    font-size: var(--clamp-h3);
+    font-weight: 900;
+    color: #0066b0;
+}
+a{
+    color: white;
+    text-decoration: none;
 }
 
 
@@ -73,6 +84,56 @@ header{
     background-image: url(../images/close-nav-icon.svg);
 }
 
+.search-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    margin: 2em auto;
+}
+
+.s-form__i-word{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    margin: 1em 0;
+}
+
+.i-word__input{
+    margin: 0.5em;
+    padding: calc(0.1em + 1vw);
+    width: 70%;
+    border: none;
+    border-radius: 0.25em;
+
+    box-shadow: 0 0.2em 0.7em rgba(0, 0, 0, 0.45);
+}
+.i-word__input:focus{
+    outline: none;
+}
+
+.search-form__submit{
+    background-color: var(--first-color);
+
+    padding: calc(0.5em + 1vw) calc(1.5em + 1vw);
+    border-radius: 0.25em;
+
+    transition: all 300ms;
+}
+.search-form__submit:hover{
+    background-color: #4548f1;
+}
+
+.fa-search{
+    font-size: var(--clamp-h3);
+
+    color: white;
+}
+
 .dictionary{
     padding: 0.5em;
 }
@@ -94,6 +155,32 @@ header{
 @media screen and (min-width: 800px){
     header{
         padding: 1em 2em;
+    }
+
+    .search-form{
+        flex-direction: column;
+        flex-direction: row;
+        align-items: flex-end;
+    
+        margin: 2em auto;
+        width: 80%;
+    }
+    
+    .s-form__i-word{
+        display: flex;
+        flex-direction: column;
+        justify-content: normal;
+        align-items: flex-start;
+    
+        margin: 1em 0;
+    }
+    
+    .i-word__input{
+        width: 60%;
+    }
+
+    .search-form__submit{
+        margin-bottom: 1.5em;
     }
 
     .dictionary{

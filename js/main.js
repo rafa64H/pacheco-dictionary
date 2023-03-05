@@ -1,4 +1,10 @@
-const listOfWords = ['aircraft', 'boat', 'hello', 'bye', 'card', 'keyboard', 'mouse', 'insect', 'truck',
+/* 
+To see how looks a response from the api:
+https://dictionaryapi.dev/
+*/
+
+//words to create some definitions on the home page
+const listOfWords = ['aircraft', 'boat', 'hello', 'goodbye', 'card', 'keyboard', 'mouse', 'insect', 'truck',
 'car', 'horse', 'cat', 'dog', 'bed']
 
 async function getDictionary(word){
@@ -10,21 +16,27 @@ async function getDictionary(word){
             return dictionaryArray
         } 
         else{
-            throw new Error('Something went wrong')
+            throw new Error()
         }
 
     }catch (err){
-        console.log(err)
+        return err
     }
 
 }
 
+//API data is named with "API" at the end
 async function createSection(userInput){
+    const dictionarySection = document.querySelector('.dictionary')
     try{        
         const dictionaryRes = await getDictionary(userInput)
+
+        if(dictionaryRes[0] === undefined){
+            throw new Error('Something went wrong, try again later or word does not exist on dictionary data')
+        }
+
         const getWordAPI = capitalizeWord(dictionaryRes[0].word)
         const getMeaningsAPI = dictionaryRes[0].meanings
-        const dictionarySection = document.querySelector('.dictionary')
 
         const wordSection = document.createElement('div')
         wordSection.classList.add('word-section')
@@ -52,7 +64,12 @@ async function createSection(userInput){
             partOfSpeechOl.classList.add('part-speech__definitions')
             meaningsDiv.append(partOfSpeechOl)
 
-            for(let j = 0; j < getDefinitionsAPI.length; j++){
+            for(let j = 0; j <= 3; j++){
+                //if in the definitions property array doesn't have 3 items
+                if(getDefinitionsAPI[j] === undefined){
+                    break;
+                }
+
                 let getDefiniAPI = getDefinitionsAPI[j].definition
                 let getExampleAPI = getDefinitionsAPI[j].example
 
@@ -79,15 +96,17 @@ async function createSection(userInput){
         
         
     }
-    catch(e){
-        console.log(e)
-    }
-    finally{
-        
+    catch(err){
+        const errorMessage = document.createElement('h2')
+        errorMessage.classList.add('word')
+        errorMessage.innerText = err
+        dictionarySection.append(errorMessage)
     }
 }
 
-createSection('Do')
+if(location.href.split(location.host)[1] === "/index.html") {
+    createSection('goodbye')
+}
 
 function capitalizeWord(wordToCap){
     return wordToCap.charAt(0).toUpperCase() + wordToCap.slice(1)
