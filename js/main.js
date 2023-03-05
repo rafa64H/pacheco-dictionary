@@ -104,8 +104,18 @@ async function createSection(userInput){
     }
 }
 
+//If user is on index.html
 if(location.href.split(location.host)[1] === "/index.html") {
-    createSection('goodbye')
+    
+    for(let i = 0; i <=3; i++){
+        let listWords = listOfWords
+        let randomNumber = randomNumberInt(0, listWords.length-1)
+        let randomWord = listWords[randomNumber]
+
+        listWords.splice(randomNumber, 1)
+
+        createSection(randomWord)
+    }
 }
 
 function capitalizeWord(wordToCap){
@@ -122,6 +132,7 @@ let stringUrl = document.URL
 let url = new URL(stringUrl)
 let wordInput = url.searchParams.get("the-word");
 
+//when on index.html wordInput will always be null
 if(wordInput !== null){
     createSection(wordInput)
 }

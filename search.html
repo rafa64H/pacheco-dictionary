@@ -27,11 +27,11 @@
         </nav>
     </header>
 
-    <form class="search-form" action="search.html">
+    <form class="search-form" action="search.html" method='GET'>
 
         <div class="s-form__i-word">
             <label for="word-input" class="i-word__label">Write the word here: </label>
-            <input type="text" id="word-input" class="i-word__input" autocomplete="off">
+            <input type="text" id="word-input" name="the-word" class="i-word__input" autocomplete="off">
         </div>
 
         <button type="submit" class="search-form__submit"><i class="fas fa-search"></i></button>
