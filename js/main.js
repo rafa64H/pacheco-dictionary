@@ -3,11 +3,7 @@ To see how looks a response from the api:
 https://dictionaryapi.dev/
 */
 
-//words to create some definitions on the home page
-const listOfWords = ['aircraft', 'boat', 'hello', 'goodbye', 'card', 'keyboard', 'mouse', 'insect', 'truck',
-'car', 'horse', 'cat', 'dog', 'bed']
-
-async function getDictionary(word){
+export async function getDictionary(word){
     try{ 
         const responseDictionary = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
         const dictionaryArray = await responseDictionary.json()
@@ -25,8 +21,9 @@ async function getDictionary(word){
 
 }
 
+
 //API data is named with "API" at the end
-async function createSection(userInput){
+export async function createSection(userInput){
     const dictionarySection = document.querySelector('.dictionary')
     try{        
         const dictionaryRes = await getDictionary(userInput)
@@ -104,29 +101,13 @@ async function createSection(userInput){
     }
 }
 
-//If user is on index.html
-if(location.href.split(location.host)[1] === "/index.html") {
-    
-    for(let i = 0; i <=3; i++){
-        let listWords = listOfWords
-        console.log(listWords)
-        let randomNumber = randomNumberInt(0, listWords.length-1)
-        let randomWord = listWords[randomNumber]
-
-        listWords.splice(randomNumber, 1)
-
-        createSection(randomWord)
-    }
-}
-
-function capitalizeWord(wordToCap){
+export function capitalizeWord(wordToCap){
     return wordToCap.charAt(0).toUpperCase() + wordToCap.slice(1)
 }
 
-function randomNumberInt(min, max){
+export function randomNumberInt(min, max){
     return Math.floor(Math.random() * (max - min) ) + min;
 }
-
 
 //search word from user input
 let stringUrl = document.URL
